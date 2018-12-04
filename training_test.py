@@ -6,11 +6,13 @@ def readfile(filename):
 
 def countlines(text):
     tolstoy = []
+    punct_list = ['.', '!', '?']
     textlines = text.splitlines()
     amount_of_lines = len(textlines)
     for line in textlines:
-        if line.count('.') == 1 and line.endswith('.') or line.count('.') == 0:
-            tolstoy.append(line)
+        for sign in punct_list:
+            if line.count('.') == 1 and line.endswith('.') or line.count('.') == 0:
+                tolstoy.append(line)
     one_sent_lines = len(tolstoy)
     part = one_sent_lines / amount_of_lines * 100
     return part
@@ -48,12 +50,15 @@ def findwords(text):
         if word == '':
             break
     x = len(wordlist)
+    lines = text.splitlines()
+    goodlines = lines[x::]
     trashsigns = '.,»:;!?«'
-    textwords = text.split()
-    for word in textwords:
-        cleanword = word.strip(trashsigns)
-        if cleanword != '':
-            textwordlist.append(cleanword)
+    for line in goodlines:
+        wordline = line.split()
+        for word in wordline:
+            cleanword = word.strip(trashsigns)
+            if cleanword != '':
+                textwordlist.append(cleanword)
     for word in wordlist:
         print(word, ':', textwordlist.count(word))
 

@@ -6,7 +6,7 @@ def readfile(filename):
 
 def countlines(text):
     tolstoy = []
-    punct_list = ['.', '!', '?']
+    punct_list = ['.', '!', '?', ':']
     textlines = text.splitlines()
     amount_of_lines = len(textlines)
     for line in textlines:

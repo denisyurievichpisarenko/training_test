@@ -11,7 +11,7 @@ def countlines(text):
     amount_of_lines = len(textlines)
     for line in textlines:
         for sign in punct_list:
-            if line.count('.') == 1 and line.endswith('.') or line.count('.') == 0:
+            if line.count(sign) == 1 and line.endswith(sign):
                 tolstoy.append(line)
     one_sent_lines = len(tolstoy)
     part = one_sent_lines / amount_of_lines * 100
